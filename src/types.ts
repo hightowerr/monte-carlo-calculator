@@ -41,3 +41,12 @@ export interface DistributionInfo {
   }[];
   example: string;
 }
+
+export interface Template {
+  id: string;
+  name: string;
+  description: string;
+  icon: React.ComponentType<any>;
+  variables: Variable[];
+  formula: string;
+}

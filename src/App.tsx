@@ -4,6 +4,7 @@ import { PlusCircle, Play, Calculator } from 'lucide-react';
 import { Variable, SimulationResult } from './types';
 import { VariableInput } from './components/VariableInput';
 import { ResultsChart } from './components/ResultsChart';
+import { TemplateSelector } from './components/TemplateSelector';
 import { 
   normalRandom, 
   uniformRandom, 
@@ -40,6 +41,13 @@ function App() {
   const deleteVariable = (id: string) => {
     setVariables(variables.filter(v => v.id !== id));
     setError(null);
+  };
+
+  const handleTemplateSelect = (templateVars: Variable[], templateFormula: string) => {
+    setVariables(templateVars);
+    setFormula(templateFormula);
+    setError(null);
+    setResults(null);
   };
 
   const validateFormula = (formula: string, variableNames: string[]): boolean => {
@@ -183,6 +191,8 @@ function App() {
 
         <div className="grid grid-cols-3 gap-6">
           <div className="col-span-1 space-y-4">
+            <TemplateSelector onSelect={handleTemplateSelect} />
+            
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold text-gray-900">Variables</h2>
@@ -205,7 +215,7 @@ function App() {
                 ))}
                 {variables.length === 0 && (
                   <p className="text-gray-500 text-center py-4">
-                    Add variables to use in your formula
+                    Add variables to use in your formula or select a template above
                   </p>
                 )}
               </div>
@@ -221,7 +231,7 @@ function App() {
                   setFormula(e.target.value);
                   setError(null);
                 }}
-                placeholder="Enter your formula using variable names (e.g., var1 * var2)"
+                placeholder="Enter your formula using variable names (e.g., pageVisits * clickRate)"
                 className="w-full h-32 px-3 py-2 border rounded-md resize-none"
               />
               <p className="text-sm text-gray-500 mt-2">
