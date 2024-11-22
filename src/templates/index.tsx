@@ -57,5 +57,32 @@ export const templates: Template[] = [
       }
     ],
     formula: 'baseSales * (1 + growthRate)'
+  },
+  {
+    id: 'revenue-projection',
+    name: 'Revenue Projection',
+    description: 'Estimate revenue based on unit sales and price per unit',
+    icon: DollarSign,
+    variables: [
+      {
+        id: crypto.randomUUID(),
+        name: 'unitSales',
+        distribution: 'normal',
+        params: {
+          mean: 5000,
+          stdDev: 500
+        }
+      },
+      {
+        id: crypto.randomUUID(),
+        name: 'pricePerUnit',
+        distribution: 'normal',
+        params: {
+          mean: 20,
+          stdDev: 2
+        }
+      }
+    ],
+    formula: 'unitSales * pricePerUnit'
   }
 ];
