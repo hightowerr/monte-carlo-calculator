@@ -155,12 +155,12 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto p-6">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
           <div className="flex items-center gap-2">
             <Calculator className="w-8 h-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-900">Monte Carlo Calculator</h1>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900">Monte Carlo Calculator</h1>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <div>
               <label className="block text-sm text-gray-600 mb-1">Iterations</label>
               <input
@@ -189,8 +189,8 @@ function App() {
           </div>
         )}
 
-        <div className="grid grid-cols-3 gap-6">
-          <div className="col-span-1 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="md:col-span-1 space-y-4">
             <TemplateSelector onSelect={handleTemplateSelect} />
             
             <div className="bg-white p-4 rounded-lg shadow-sm">
@@ -222,7 +222,7 @@ function App() {
             </div>
           </div>
 
-          <div className="col-span-2 space-y-6">
+          <div className="md:col-span-2 space-y-6">
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Formula</h2>
               <textarea
